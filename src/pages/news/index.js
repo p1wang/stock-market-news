@@ -11,7 +11,7 @@ function NewsPage() {
   }
 
   return (
-    <Container>
+    <Container component="main" sx={{ mt: 10 }}>
       <NewsList data={news.data} />
     </Container>
   );

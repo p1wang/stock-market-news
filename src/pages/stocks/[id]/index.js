@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   ButtonGroup,
+  Container,
   IconButton,
   useMediaQuery,
   useTheme,
@@ -68,7 +69,7 @@ function StockPage() {
   }
 
   return (
-    <>
+    <Container component="main" sx={{ mt: 10 }}>
       <ButtonGroup
         variant="text"
         aria-label="outlined button group"
@@ -108,7 +109,7 @@ function StockPage() {
       )}
 
       {stockNewsData && <NewsList data={stockNewsData.data} />}
-    </>
+    </Container>
   );
 }
 

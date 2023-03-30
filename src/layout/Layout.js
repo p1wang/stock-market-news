@@ -7,12 +7,10 @@ function Layout({ children }) {
   const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <>
+    <Container maxWidth="false" disableGutters>
       <Navbar />
-      <Container component="main" sx={{ mt: smallScreen ? 10 : 15 }}>
-        {children}
-      </Container>
-    </>
+      {children}
+    </Container>
   );
 }
 

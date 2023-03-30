@@ -3,7 +3,7 @@ import Image from "next/image";
 
 function Custom404() {
   return (
-    <Container>
+    <Container sx={{ mt: 10 }}>
       <Box
         sx={{
           position: "relative",

@@ -63,7 +63,7 @@ function Navbar(props) {
 
   return (
     <>
-      <AppBar component="nav">
+      <AppBar component="nav" position="sticky">
         <Toolbar sx={{ justifyContent: "center" }}>
           <Link
             href={"/"}

@@ -16,7 +16,7 @@ function StocksPage() {
   // console.log("dayWatch", Object.entries(dayWatch.data.attributes));
 
   return (
-    <Container sx={{ flexGrow: 1 }}>
+    <Container sx={{ flexGrow: 1, mt: 10 }}>
       <Grid container spacing={{ xs: 2, md: 3 }}>
         {Object.entries(dayWatch.data.attributes).map((value, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
