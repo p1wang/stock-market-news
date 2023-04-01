@@ -1,16 +1,7 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_NEWS_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-    "X-RapidAPI-Host": process.env.NEXT_PUBLIC_NEWS_API_HOST,
-    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPIDAPI_KEY,
-  },
-});
+import api from "./configs/axiosConfig";
 
 const StocksService = {
-  async getChart(slug, period) {
+  getChart: async (slug, period) => {
     try {
       const res = await api.get(
         `/symbols/get-chart?symbol=${slug}&period=${period}`
@@ -22,7 +13,7 @@ const StocksService = {
     }
   },
 
-  async getDayWatch() {
+  getDayWatch: async () => {
     try {
       const res = await api.get(`/market/get-day-watch`);
       return res.data;
@@ -32,7 +23,7 @@ const StocksService = {
     }
   },
 
-  async getSummary(slug) {
+  getSummary: async (slug) => {
     try {
       const res = await api.get(`/symbols/get-summary?symbols=${slug}`);
       return res.data;
@@ -41,7 +32,7 @@ const StocksService = {
       return error;
     }
   },
-  async getRealTimeQuotes(slug) {
+  getRealTimeQuotes: async (slug) => {
     console.log(slug);
 
     try {
