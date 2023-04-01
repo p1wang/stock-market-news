@@ -2,8 +2,8 @@ import Loader from "@/components/Loader";
 import NewsList from "@/components/NewsList";
 import StockChart from "@/components/StockChart";
 import StockSummary from "@/components/StockSummary";
-import { useGetNewsBySymbol } from "@/hooks/news";
-import { useGetChart, useGetSummary } from "@/hooks/stocks";
+import useNews from "@/hooks/useNews";
+import useStocks from "@/hooks/useStocks";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import {
   Box,
@@ -31,8 +31,9 @@ const periodSelections = [
 
 function StockPage() {
   const router = useRouter();
-
   const theme = useTheme();
+  const { getChart, getSummary } = useStocks();
+  const { getNewsBySymbol } = useNews();
   const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const { id } = router.query;
@@ -43,20 +44,20 @@ function StockPage() {
     data: stockChartData,
     isLoading: stockChartDataIsLoading,
     error: stockChartDataError,
-  } = useGetChart(id, activeBtn);
+  } = getChart(id, activeBtn);
 
   const {
     data: stockSummaryData,
     isLoading: stockSummaryDataIsLoading,
     error: stockSummaryDataError,
-  } = useGetSummary(id);
+  } = getSummary(id);
 
   const {
     data: stockNewsData,
     isLoading: stockNewsDataIsLoading,
     error: stockNewsDataError,
     refetch,
-  } = useGetNewsBySymbol(id);
+  } = getNewsBySymbol(id);
 
   if (stockChartDataIsLoading || stockSummaryDataIsLoading) {
     return <Loader />;

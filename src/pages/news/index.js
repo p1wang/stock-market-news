@@ -1,10 +1,12 @@
 import Loader from "@/components/Loader";
 import NewsList from "@/components/NewsList";
-import { useGetNews } from "@/hooks/news";
+import useNews from "@/hooks/useNews";
 import { Container } from "@mui/material";
 
 function NewsPage() {
-  const { data: news, isLoading } = useGetNews();
+  const { getNews } = useNews();
+
+  const { data: news, isLoading } = getNews();
 
   if (isLoading) {
     return <Loader />;

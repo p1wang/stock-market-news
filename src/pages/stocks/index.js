@@ -1,10 +1,11 @@
 import DayWatchList from "@/components/DayWatchList";
 import Loader from "@/components/Loader";
-import { useGetDayWatch } from "@/hooks/stocks";
+import useStocks from "@/hooks/useStocks";
 import { Container, Grid } from "@mui/material";
 
 function StocksPage() {
-  const { data: dayWatch, isLoading, error } = useGetDayWatch();
+  const { getDayWatch } = useStocks();
+  const { data: dayWatch, isLoading, error } = getDayWatch();
 
   if (isLoading) {
     return <Loader />;
