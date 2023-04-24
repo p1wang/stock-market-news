@@ -1,24 +1,27 @@
 import Loader from "@/components/Loader";
 import NewsList from "@/components/NewsList";
 import StockCard from "@/components/StockCard";
-import { useGetNews } from "@/hooks/news";
-import { useGetDayWatch, useGetRealTimeQuotes } from "@/hooks/stocks";
+import useNews from "@/hooks/useNews";
+import useStocks from "@/hooks/useStocks";
 import { Container, Grid } from "@mui/material";
 import Head from "next/head";
 
 export default function Home() {
-  const { data: news, isLoading } = useGetNews();
+  const { getNews } = useNews();
+  const { getDayWatch, getRealTimeQuotes } = useStocks();
+
+  const { data: news, isLoading } = getNews();
   const {
     data: dayWatch,
     isLoading: isLoadingDayWatch,
     isFetched: isFetchedDayWatch,
-  } = useGetDayWatch();
+  } = getDayWatch();
 
   const {
     data: realTimeQuotes,
     isLoading: isLoadingRealTimeQuotes,
     refetch,
-  } = useGetRealTimeQuotes(
+  } = getRealTimeQuotes(
     dayWatch?.data.attributes.most_active.map((item) => item.id)
   );
 
